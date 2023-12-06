@@ -1,39 +1,33 @@
 <?php
+include_once '../database/database.php';
 
-header('Content-Type: application/json');
-
-$data = file_get_contents("php://input");
+$data = file_get_contents('php://input');
 $json = json_decode($data);
 
 $username = $json->username;
+$email = $json->email;
 $password = $json->password;
 $confirmpassword = $json->confirmpassword;
 
-if ($password != $confirmpassword)
-{
-    http_response_code(400);
-    die(json_encode(["success" => false, "message" => "Passwords do not match"]));
+if ($username == "" || $email == "" || $password == "" || $confirmpassword == "") {
+    $response = ["msg" => "Fill All Fields"];}
+
+$email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
+if (!preg_match($email_format, $email)) {
+    $response = ["msg" => "Invalid email address."];
 }
 
-$connection = new PDO("mysql:host=localhost;port=3306;dbname=androidapp", "root", "");
+$query = "SELECT * FROM users WHERE email = ?";
+$params = [$username, $email, $password, $confirmpassword];
+$result = selectOne($query, $params);
 
-$query = "SELECT COUNT(*) AS `count` FROM `users` WHERE `username` = ?";
-$params = [$username];
-
-$statement = $connection->prepare($query);
-$statement->execute($params);
-$result = $statement->fetch(PDO::FETCH_OBJ);
-
-if ($result->count > 0)
-{
-    http_response_code(400);
-    die(json_encode(["message" => "Username already taken"]));
+if ($result->num_rows > 0) {
+        $response = ["msg" => "User already Exits. Please choose a different user."];
 }
 
-$query = "INSERT INTO `users` (`username`, `password`) VALUES (?, ?)";
-$params = [$username, $password];
+if ($password !== $confirmpassword) {
+    $response = ["msg" => "Passwords do not match!"];
+}
 
-$statement = $connection->prepare($query);
-$statement->execute($params);
-
-echo json_encode(["success" => true, "message" => "Registration successful"]);
+echo json_encode($response)
+?>

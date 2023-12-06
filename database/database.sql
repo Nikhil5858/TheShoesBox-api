@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `theshoesbox-app`;
-CREATE DATABASE `theshoesbox-app`;
-USE `theshoesbox-app`;
+DROP DATABASE IF EXISTS `theshoesbox`;
+CREATE DATABASE `theshoesbox`;
+USE `theshoesbox`;
 
 CREATE TABLE `users`
 (
@@ -9,7 +9,7 @@ CREATE TABLE `users`
     `email` VARCHAR(100) NOT NULL,
     `phoneno` VARCHAR(10) NOT NULL,
     `password` VARCHAR(100) NOT NULL,
-    `usertype` VARCHAR(20) NOT NULL
+    `usertype` VARCHAR(20) DEFAULT "user" 
 );
 
 CREATE TABLE `category`

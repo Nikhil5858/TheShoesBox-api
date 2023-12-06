@@ -1,26 +1,26 @@
-<?php 
+<?php
+include_once '../database/database.php';
 
-header( 'Content-Type: application/json');
-
-$data = file_get_contents("php://input");
+$data = file_get_contents('php://input');
 $json = json_decode($data);
 
-$username = $json->username;
+$email = $json->email;
 $password = $json->password;
 
-$query = "SELECT `id`, `username` FROM `users` WHERE `username` = ? AND `password` = ?";
+if ($email == "" || $password == "") {
+    $response = ["msg" => "Fill All Fields"];
+} else {
+    $query = "SELECT id,name FROM users WHERE email = ? and password = ? and usertype = ?";
+    $params = [$email, $password, "user"];
 
-$params = [$username, $password];
+    $result = selectOne($query, $params);
 
-$connection = new PDO("mysql:host=localhost;port=3306;dbname=androidapp", "root", "");
-$statement = $connection->prepare($query);
-$statement->execute($params);
-
-$result = $statement->fetch(PDO::FETCH_OBJ);
-if(!$result)
-{
-    http_response_code(401);
-    die(json_encode(["message" => "Wrong username or password"]));
+    if ($result == "") {
+        $response = ["msg" => "Wrong Username Or Password"];
+    } else {
+        $response = ["msg" => "Success"];
+    }
 }
 
-echo json_encode($result);
+echo json_encode(["" => true, "msg" => "Registration successful"])
+?>
