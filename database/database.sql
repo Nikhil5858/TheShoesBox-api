@@ -47,7 +47,7 @@ CREATE TABLE `cart`
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE `AddressDetails`
+CREATE TABLE `addressdetails`
 (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT NOT NULL,
