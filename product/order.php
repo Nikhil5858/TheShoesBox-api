@@ -1,5 +1,5 @@
 <?php
-include '../includes/connection.php';
+include '../database/database.php';
 
 $action = $_POST['action'];
 if ($action == 'pending') {
