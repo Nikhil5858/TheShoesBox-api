@@ -13,50 +13,13 @@ if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $det
     http_response_code(403);
     $response = ["msg" => "Fill All Fields"];
 } else {
-    $query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details, pro_img) VALUES (?, ?, ?, ?, ?, NULL)";
     $params = [$name, $category_id, $brand_id, $price, $details];
 
-    execute($query, $params);
+    $ProductId = execute($query, $params, true);
 
-    $response = ["msg" => "Product Added Successfully"];
+    $response = ["msg" => "Product Added Successfully", "id" => $ProductId];
 }
 
 echo json_encode($response);
 ?>
-
-<!-- <?php
-        // include_once '/xampp/htdocs/api/database/database.php';
-
-        // $data = json_decode(file_get_contents('php://input'));
-
-        // $name = $data->name;
-        // $category_id = $data->category_id;
-        // $brand_id = $data->brand_id;
-        // $price = $data->price;
-        // $details = $data->details;
-        // $imgname = $data->pro_img;
-
-        // $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-        // $fileExtension = strtolower(pathinfo($imgname, PATHINFO_EXTENSION));
-
-        // if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "" || $imgname == "") {
-        //     http_response_code(403);
-        //     $response = ["msg" => "Fill All Fields"];
-        // } elseif (in_array($fileExtension, $allowedExtensions)) {
-        //     $imgpath = $_FILES['image'];
-        //     $folder = "../product" . $imgname;
-
-        //     if (move_uploaded_file($imgpath, $folder)) {
-        //         $sql = "INSERT INTO product(name,cat_id,brand_id,price,pro_img,pro_details) VALUES(?,?,?,?,?,?)";
-
-        //         $params = [$name, $category_id, $brand_id, $price, $imgname, $details];
-        //         execute($query, $params);
-        //         $response = ["msg" => "Product Added Successfully"];
-        //     }
-        // } else {
-        //     http_response_code(403);
-        //     $response = ["msg" => "Somthing Went's Wrong. Please Try Again"];
-        // }
-
-        // echo json_encode($response)
-?> -->

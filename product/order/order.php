@@ -1,5 +1,8 @@
 <?php
-include '../includes/connection.php';
+include_once '../../database/database.php';
+
+$data = json_decode(file_get_contents('php://input'));
+
 
 $action = $_POST['action'];
 if ($action == 'pending') {
@@ -13,7 +16,7 @@ if ($action == 'pending') {
 
     $sql = "UPDATE `order` SET status='$status' WHERE id='$id'";
     if (mysqli_query($con, $sql)) {
-        echo "Order Is Replesd";
+        echo "Order Is Replaced";
         return;
     } else {
         echo "Somthing Went's Wrong. Please Try Again.";
