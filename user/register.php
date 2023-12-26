@@ -11,33 +11,39 @@ $confirmpassword = $data->confirmpassword;
 
 $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
 
-if ($name == "" || $email == "" || $password == "" || $phoneno == "") {
-    http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
-} else if ($password !== $confirmpassword) {
-    http_response_code(403);
-    $response = ["msg" => "Passwords do not match!"];
-} else if (!preg_match($email_format, $email)) {
-    http_response_code(403);
-    $response = ["msg" => "Invalid email address."];
-}
-else 
+if ($name == "" || $email == "" || $password == "" || $phoneno == "") 
 {
-    $query = "SELECT * FROM users WHERE email = ?";
-    $params = [$email];
-    $result = selectOne($query, $params);
-    
-    if ($result != "") {
-        http_response_code(403);
-        $response = ["msg" => "User already Exits. Please choose a different user."];
-    } else {
-        $query = "INSERT INTO users (name,email,phoneno,password) VALUES(?,?,?,?)";
-        $params = [$name, $email, $phoneno, $password];
-        
-        execute($query, $params);
-        $response = ["msg" => "User added!"];
-    }
+    http_response_code(403);
+    die(json_encode(["msg" => "Fill All Fields"]));
+}
+if ($password !== $confirmpassword) 
+{
+    http_response_code(403);
+    die(json_encode(["msg" => "Passwords do not match!"]));
+}
+if (!preg_match($email_format, $email)) 
+{
+    http_response_code(403);
+    die(json_encode(["msg" => "Invalid email address."]));
 }
 
-echo json_encode($response)
+$query = "SELECT * FROM users WHERE email = ?";
+$params = [$email];
+$result = selectOne($query, $params);
+
+if ($result != "")
+{
+    http_response_code(403);
+    die(json_encode(["msg" => "User already Exits. Please choose a different user."]));
+} 
+else 
+{
+    $query = "INSERT INTO users (name,email,phoneno,password) VALUES(?,?,?,?)";
+    $params = [$name, $email, $phoneno, $password];
+    
+    execute($query, $params);
+    die(json_encode(["msg" => "User added!"]));
+}
+
+echo json_encode($result)
 ?>

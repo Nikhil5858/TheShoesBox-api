@@ -6,22 +6,24 @@ $data = json_decode(file_get_contents('php://input'));
 $email = $data->email;
 $password = $data->password;
 
-if ($email == "" || $password == "") {
+if ($email == "" || $password == "") 
+{
     http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
-} else {
-    $query = "SELECT id,name FROM users WHERE email = ? and password = ? and usertype = ?";
+    die(json_encode(["msg" => "Fill All Fields"]));
+}
+else 
+{
+    $query = "SELECT id,email,usertype FROM users WHERE email = ? and password = ? and usertype = ?";
     $params = [$email, $password, "user"];
     
     $result = selectOne($query, $params);
-    
-    if ($result == "") {
+
+    if (!$result) 
+    {
         http_response_code(403);
-        $response = ["msg" => "Wrong Username Or Password"];
-    } else {
-        $response = ["msg" => "Success"];
+        die(json_encode(["msg" => "Wrong Username Or Password"]));
     }
 }
 
-echo json_encode($response)
+echo json_encode($result)
 ?>
