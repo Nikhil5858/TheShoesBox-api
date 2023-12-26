@@ -12,16 +12,18 @@ $quantity = $data->quantity;
 $totalprice = $data->totalprice;
 $status = $data->status; 
 
-if ($user_id == "" || $product_id == "" || $address_id == "" || $rate == "" || $pro_size == "" || $quantity == "" || $totalprice == "") {
+if ($user_id == "" || $product_id == "" || $address_id == "" || $rate == "" || $pro_size == "" || $quantity == "" || $totalprice == "") 
+{
     http_response_code(403);
-    $response = ["msg" => "Looks like you missed some fields. Please check and try again"];
-} else {
-    $query = "INSERT INTO `order` (user_id, product_id, address_id, rate, pro_size, quantity, totalprice, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $params = [$user_id, $product_id, $address_id, $rate, $pro_size, $quantity, $totalprice, $status];
+    die(json_encode(["message" => "Fill All Fields"]));
 
-    execute($query, $params);
-    $response = ["msg" => "Your Order is successfully added"];
 }
+
+$query = "INSERT INTO `order` (user_id, product_id, address_id, rate, pro_size, quantity, totalprice, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+$params = [$user_id, $product_id, $address_id, $rate, $pro_size, $quantity, $totalprice, $status];
+
+execute($query, $params);
+die(json_encode(["message" => "Your Order is successfully added"]));
 
 echo json_encode($response);
 ?>

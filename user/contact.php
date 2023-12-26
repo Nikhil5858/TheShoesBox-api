@@ -12,17 +12,17 @@ $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
 
 if ($name == "" || $email == "" || $subject == "" || $message == "") {
     http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
+    $response = ["message" => "Fill All Fields"];
 }else if (!preg_match($email_format, $email)) {
     http_response_code(403);
-    $response = ["msg" => "Invalid email address."];
+    $response = ["message" => "Invalid email address."];
 }
 else {
     $query = "INSERT INTO contact (name,email,subject,message) VALUES(?,?,?,?)";
     $params = [$name, $email, $subject, $message];
     
     execute($query, $params);
-    $response = ["msg" => "Your Request Was Added!"];
+    $response = ["message" => "Your Request Was Added!"];
 }
 
 echo json_encode($response)

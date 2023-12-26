@@ -10,16 +10,17 @@ $brand_id = $data->brand_id;
 $price = $data->price;
 $details = $data->details;
 
-if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "" || $id == "") {
+if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "" || $id == "")
+{
     http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
-}else {
-    $query = "UPDATE product SET name=?, cat_id=?, brand_id=?, price=?, pro_details=? WHERE id=?";
-    $params = [$name, $category_id, $brand_id, $price, $details, $id]; 
-    execute($query, $params);
-
-    $response = ["msg" => "Product Updated Successfully"];
+    die(json_encode(["message" => "Fill All Fields"]));
 }
+
+$query = "UPDATE product SET name=?, cat_id=?, brand_id=?, price=?, pro_details=? WHERE id=?";
+$params = [$name, $category_id, $brand_id, $price, $details, $id]; 
+execute($query, $params);
+
+die(json_encode(["message" => "Product Updated Successfully"]));
 
 echo json_encode($response);
 ?>

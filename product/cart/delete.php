@@ -6,22 +6,21 @@ $data = json_decode(file_get_contents('php://input'));
 $productId = $data->productId;
 $userId = $data->userId;
 
-if ($productId == "" || $userId == "") {
+if ($productId == "" || $userId == "") 
+{
     http_response_code(403);
-    $response = ["msg" => "Looks like you missed some fields. Please check and try again!"];
-}else{
-    $query = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
-    $params = [$userId, $productId];
+    die(json_encode(["message" => "Fill All Fields"]));
+}
 
-    $deleteResult = execute($query, $params);
+$query = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
+$params = [$userId, $productId];
 
-    if ($deleteResult) {
-        $response = ["msg" => "Product deleted successfully"];
-    } else {
-        http_response_code(500);
-        $response = ["msg" => "Error deleting product from cart"];
-    }
-}   
+$deleteResult = execute($query, $params);
+
+if ($deleteResult) 
+{
+    die(json_encode(["message" => "Product deleted successfully"]));
+}
 
 echo json_encode($response);
 ?>

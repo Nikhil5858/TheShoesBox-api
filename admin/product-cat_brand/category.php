@@ -1,29 +1,31 @@
 <?php
-include_once '../database/database.php';
+include_once '../../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
 $name = $data->name;
 
-if ($name == ""){
+if ($name == "")
+{
     http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
-}else{
-    $query = "SELECT * FROM category WHERE name = ?";
-    $params = [$name];
-    $result = selectOne($query, $params);
-    
-    if ($result != "") {
-        http_response_code(403);
-        $response = ["msg" => "Category Name already Exits. Please choose a different Name"];
-    }else {
-        $query = "INSERT INTO category(name) VALUES(?)";
-        $params = [$name];
-        
-        execute($query, $params);
-        $response = ["msg" => "Category Added Successfully"];
-    }
+    die(json_encode(["message" => "Fill All Fields"]));
 }
+
+$query = "SELECT * FROM category WHERE name = ?";
+$params = [$name];
+$response = selectOne($query, $params);
+if ($response !== false) {
+    http_response_code(403);
+    $response = ["message" => "category Name already exists. Please choose a different Name."];
+    echo json_encode($response);
+    exit;
+}
+
+$query = "INSERT INTO category(name) VALUES(?)";
+$params = [$name];
+
+$response = execute($query, $params);
+die(json_encode(["message" => "category Added Successfully"]));
 
 echo json_encode($response)
 ?>

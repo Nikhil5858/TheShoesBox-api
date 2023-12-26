@@ -10,40 +10,45 @@ $password = $data->password;
 $confirmpassword = $data->confirmpassword;
 
 $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
+$phoneno_format = '/^[0-9]{10}$/';
+
 
 if ($name == "" || $email == "" || $password == "" || $phoneno == "") 
 {
     http_response_code(403);
-    die(json_encode(["msg" => "Fill All Fields"]));
+    die(json_encode(["message" => "Fill All Fields"]));
 }
 if ($password !== $confirmpassword) 
 {
     http_response_code(403);
-    die(json_encode(["msg" => "Passwords do not match!"]));
+    die(json_encode(["message" => "Passwords do not match!"]));
 }
 if (!preg_match($email_format, $email)) 
 {
     http_response_code(403);
-    die(json_encode(["msg" => "Invalid email address."]));
+    die(json_encode(["message" => "Invalid email address."]));
+}
+if (!preg_match($phoneno_format, $phoneno)) 
+{
+    http_response_code(403);
+    die(json_encode(["message" => "Invalid Phone No."]));
 }
 
 $query = "SELECT * FROM users WHERE email = ?";
 $params = [$email];
-$result = selectOne($query, $params);
+$response = selectOne($query, $params);
 
-if ($result != "")
+if ($response != "")
 {
     http_response_code(403);
-    die(json_encode(["msg" => "User already Exits. Please choose a different user."]));
-} 
-else 
-{
-    $query = "INSERT INTO users (name,email,phoneno,password) VALUES(?,?,?,?)";
-    $params = [$name, $email, $phoneno, $password];
-    
-    execute($query, $params);
-    die(json_encode(["msg" => "User added!"]));
+    die(json_encode(["message" => "User already Exits. Please choose a different user."]));
 }
 
-echo json_encode($result)
+$query = "INSERT INTO users (name,email,phoneno,password) VALUES(?,?,?,?)";
+$params = [$name, $email, $phoneno, $password];
+
+$response = execute($query, $params);
+die(json_encode(["message" => "User added!"]));
+
+echo json_encode($response)
 ?>

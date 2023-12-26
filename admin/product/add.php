@@ -9,17 +9,20 @@ $brand_id = $data->brand_id;
 $price = $data->price;
 $details = $data->details;
 
-if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "") {
+if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "") 
+{
     http_response_code(403);
-    $response = ["msg" => "Fill All Fields"];
-} else {
-    $query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details, pro_img) VALUES (?, ?, ?, ?, ?, NULL)";
-    $params = [$name, $category_id, $brand_id, $price, $details];
+    die(json_encode(["message" => "Fill All Fields"]));
+} 
 
-    $ProductId = execute($query, $params, true);
+$query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details, pro_img) VALUES (?, ?, ?, ?, ?,'')";
+$params = [$name, $category_id, $brand_id, $price, $details];
 
-    $response = ["msg" => "Product Added Successfully", "id" => $ProductId];
-}
+$ProductId = execute($query, $params, true);
+
+die(json_encode(["message" => "Product Added Successfully"]));
+
+// $response = ["message" => "Product Added Successfully", "id" => $ProductId];
 
 echo json_encode($response);
 ?>

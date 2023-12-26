@@ -3,7 +3,8 @@ include_once '../../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-if (isset($data->id, $data->imagename)) {
+if (isset($data->id, $data->imagename)) 
+{
 
     $id = $data->id;
     $imagename = $data->imagename;
@@ -14,11 +15,12 @@ if (isset($data->id, $data->imagename)) {
     $params = [$imagename, $id  ];
     execute($query, $params);
 
-    $response = ["msg" => "Image Added Successfully"];
+    die(json_encode(["message" => "Image Added Successfully"]));
+
 } 
 else
 {
-    $response = ["msg" => "Invalid!"];
+    die(json_encode(["message" => "Invalid"]));
 }
 
 echo json_encode($response);
