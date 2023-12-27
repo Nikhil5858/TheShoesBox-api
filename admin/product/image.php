@@ -3,25 +3,25 @@ include_once '../../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-if (isset($data->id, $data->imagename)) 
-{
+$id = $data->id;
+$imagename = $data->imagename;
+$imageData = $data->imageData;
 
-    $id = $data->id;
-    $imagename = $data->imagename;
+if (!empty($id) && !empty($imagename) && !empty($imageData)) {
+    $decodedImage = base64_decode($imageData);
 
-    $imagePath = '../product/images/' . $imagename;
-    
+    $destinationFolder = '../product/images/';
+
+    $imagePath = $destinationFolder . $imagename;
+
+    file_put_contents($imagePath, $decodedImage);
+
     $query = "UPDATE product SET pro_img=? WHERE id=?";
-    $params = [$imagename, $id  ];
+    $params = [$imagename, $id];
     execute($query, $params);
 
     die(json_encode(["message" => "Image Added Successfully"]));
-
-} 
-else
-{
+} else {
     die(json_encode(["message" => "Invalid"]));
 }
-
-echo json_encode($response);
 ?>

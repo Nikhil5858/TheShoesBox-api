@@ -3,40 +3,27 @@ include_once '../../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-
-$action = $_POST['action'];
-if ($action == 'pending') {
-    $id = $_POST['id'];
-    $status = $_POST['status'];
+if (isset($data->id, $data->status)) {
+    $id = $data->id;
+    $status = $data->status;
 
     if ($id == "" || $status == "") {
-        echo "Some Fields Not Found";
-        return;
+        http_response_code(400);
+        die(json_encode(["message" => "Some Fields Not Found"]));
     }
 
-    $sql = "UPDATE `order` SET status='$status' WHERE id='$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Order Is Replaced";
-        return;
+    $sql = "UPDATE `order` SET status=? WHERE id=?";
+    $params = [$status, $id];
+
+    if (execute($sql, $params)) {
+        http_response_code(200);
+        die(json_encode(["message" => "Order Update Successful"]));
     } else {
-        echo "Somthing Went's Wrong. Please Try Again.";
-        return;
+        http_response_code(500);
+        die(json_encode(["message" => "Something Went Wrong. Please Try Again."]));
     }
-} else if ($action == 'cancel') {
-    $id = $_POST['id'];
-    $status = $_POST['status'];
-
-    if ($id == "" || $status == "") {
-        echo "Some Fields Not Found";
-        return;
-    }
-
-    $sql = "UPDATE `order` SET status='$status' WHERE id='$id'";
-    if (mysqli_query($con, $sql)) {
-        echo "Order Cancel";
-        return;
-    } else {
-        echo "Somthing Went's Wrong. Please Try Again.";
-        return;
-    }
+} else {
+    http_response_code(400);
+    die(json_encode(["message" => "Required parameters not provided"]));
 }
+?>

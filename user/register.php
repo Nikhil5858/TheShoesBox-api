@@ -7,13 +7,13 @@ $name = $data->name;
 $email = $data->email;
 $phoneno = isset($data->phoneno) ? $data->phoneno : null;
 $password = $data->password;
-$confirmpassword = $data->confirmpassword;
+$confirmpassword = $data->confirmPassword;
 
 $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
 
 if ($name == "" || $email == "" || $password == "") 
 {
-    http_response_code(403);
+    http_response_code(400);
     die(json_encode(["message" => "Fill All Fields"]));
 }
 if ($password !== $confirmpassword) 
