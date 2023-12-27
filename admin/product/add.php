@@ -8,6 +8,7 @@ $category_id = $data->category_id;
 $brand_id = $data->brand_id;
 $price = $data->price;
 $details = $data->details;
+$pro_img = isset($data->pro_img) ? $data->pro_img : null;
 
 if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $details == "") 
 {
@@ -15,14 +16,11 @@ if ($name == "" || $category_id == "" || $brand_id == "" || $price == "" || $det
     die(json_encode(["message" => "Fill All Fields"]));
 } 
 
-$query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details, pro_img) VALUES (?, ?, ?, ?, ?,'')";
-$params = [$name, $category_id, $brand_id, $price, $details];
+$query = "INSERT INTO product(name, cat_id, brand_id, price, pro_details, pro_img) VALUES (?, ?, ?, ?, ?, ?)";
+$params = [$name, $category_id, $brand_id, $price, $details, $pro_img];
 
 $ProductId = execute($query, $params, true);
-
 die(json_encode(["message" => "Product Added Successfully"]));
-
-// $response = ["message" => "Product Added Successfully", "id" => $ProductId];
 
 echo json_encode($response);
 ?>

@@ -5,15 +5,13 @@ $data = json_decode(file_get_contents('php://input'));
 
 $name = $data->name;
 $email = $data->email;
-$phoneno = $data->phoneno;
+$phoneno = isset($data->phoneno) ? $data->phoneno : null;
 $password = $data->password;
 $confirmpassword = $data->confirmpassword;
 
 $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
-$phoneno_format = '/^[0-9]{10}$/';
 
-
-if ($name == "" || $email == "" || $password == "" || $phoneno == "") 
+if ($name == "" || $email == "" || $password == "") 
 {
     http_response_code(403);
     die(json_encode(["message" => "Fill All Fields"]));
@@ -28,11 +26,6 @@ if (!preg_match($email_format, $email))
     http_response_code(403);
     die(json_encode(["message" => "Invalid email address."]));
 }
-if (!preg_match($phoneno_format, $phoneno)) 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Invalid Phone No."]));
-}
 
 $query = "SELECT * FROM users WHERE email = ?";
 $params = [$email];
@@ -44,7 +37,7 @@ if ($response != "")
     die(json_encode(["message" => "User already Exits. Please choose a different user."]));
 }
 
-$query = "INSERT INTO users (name,email,phoneno,password) VALUES(?,?,?,?)";
+$query = "INSERT INTO users (name, email, phoneno, password) VALUES (?, ?, ?, ?)";
 $params = [$name, $email, $phoneno, $password];
 
 $response = execute($query, $params);

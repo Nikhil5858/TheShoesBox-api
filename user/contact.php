@@ -10,20 +10,22 @@ $message = $data->message;
 
 $email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
 
-if ($name == "" || $email == "" || $subject == "" || $message == "") {
+if ($name == "" || $email == "" || $subject == "" || $message == "") 
+{
     http_response_code(403);
-    $response = ["message" => "Fill All Fields"];
-}else if (!preg_match($email_format, $email)) {
-    http_response_code(403);
-    $response = ["message" => "Invalid email address."];
+    die(json_encode(["message" => "Fill All Fields"]));
 }
-else {
+
+if (!preg_match($email_format, $email)) {
+    http_response_code(403);
+    die(json_encode(["message" => "Invalid email address."]));
+}
+
     $query = "INSERT INTO contact (name,email,subject,message) VALUES(?,?,?,?)";
     $params = [$name, $email, $subject, $message];
     
     execute($query, $params);
-    $response = ["message" => "Your Request Was Added!"];
-}
+    die(json_encode(["message" => "Your Request Was Added!"]));
 
 echo json_encode($response)
 ?>
