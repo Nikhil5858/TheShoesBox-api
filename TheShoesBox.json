@@ -1,0 +1,232 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "TheShoesBox",
+    "dateExported": "2024-01-01T13:46:48.723Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "3c06d68e-d291-46a5-bb40-6c276d78ff95",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.050Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "1dadbf43-0b48-4e89-a9ff-405fc5bec132",
+            "name": "Profile",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.051Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "2fa857af-ba0f-4708-bce1-ea1fcaf476c1",
+            "name": "Category",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.052Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "71b51860-5e42-4cea-8484-2ffd3278473c",
+            "name": "Brand",
+            "containerId": "",
+            "created": "2024-01-01T13:32:47.282Z",
+            "sortNum": 35000
+        },
+        {
+            "_id": "ebbf464f-6a2a-46fd-a643-f32761f05088",
+            "name": "Cart",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.053Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "607adac4-3f29-48d4-95de-62221a0b5483",
+            "name": "Order",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.054Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "4d5e1c4e-2fa2-415b-8935-7307d016b35d",
+            "name": "Contact",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.055Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "302f5034-012e-4401-abb3-67e279b12387",
+            "name": "Address",
+            "containerId": "",
+            "created": "2024-01-01T13:18:22.056Z",
+            "sortNum": 80000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "70371fe8-ed34-401c-a62b-c5362206091e",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "3c06d68e-d291-46a5-bb40-6c276d78ff95",
+            "name": "Login",
+            "url": "localhost/theshoesbox-api/user/login.php",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-01-01T13:20:19.897Z",
+            "modified": "2024-01-01T13:25:34.893Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"vai@gmail.com\",\n  \"password\": \"v\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "71912395-590d-4e94-bd14-a992747b7c58",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "3c06d68e-d291-46a5-bb40-6c276d78ff95",
+            "name": "Register",
+            "url": "localhost/theshoesbox-api/user/register.php",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-01-01T13:24:39.537Z",
+            "modified": "2024-01-01T13:27:16.877Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"zoro\",\n  \"email\":\"zoro@gmail.com\",\n  \"password\":\"zoro\",\n  \"confirmPassword\":\"zoro\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dd321ffd-6bbb-49a1-9738-3d168be0a43f",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "2fa857af-ba0f-4708-bce1-ea1fcaf476c1",
+            "name": "select",
+            "url": "localhost/theshoesbox-api/product/category/category.php",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-01-01T13:31:38.079Z",
+            "modified": "2024-01-01T13:32:34.551Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c5b02c2d-2dfd-4455-b2dc-062e68ff0fdc",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "71b51860-5e42-4cea-8484-2ffd3278473c",
+            "name": "select",
+            "url": "localhost/theshoesbox-api/product/brand/brand.php",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-01-01T13:32:47.282Z",
+            "modified": "2024-01-01T13:33:08.853Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "7b732d24-5d13-443d-9300-cfd05b988132",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
+            "name": "Add",
+            "url": "localhost/theshoesbox-api/product/cart/add.php",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-01-01T13:33:55.557Z",
+            "modified": "2024-01-01T13:35:12.919Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productId\":\"4\",\n  \"userId\":\"1\",\n  \"quantity\":\"100000\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ca91a04f-f50d-4466-8f0b-4622173d7316",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
+            "name": "Delete",
+            "url": "localhost/theshoesbox-api/product/cart/add.php",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-01-01T13:36:23.962Z",
+            "modified": "2024-01-01T13:36:23.962Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productId\":\"4\",\n  \"userId\":\"1\",\n  \"quantity\":\"100000\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ca0faae4-8d10-40b3-a946-7e140e2740ed",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "607adac4-3f29-48d4-95de-62221a0b5483",
+            "name": "checkout",
+            "url": "localhost/theshoesbox-api/product/order/checkout.php",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-01-01T13:37:49.247Z",
+            "modified": "2024-01-01T13:39:47.530Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":\"1\",\n  \"product_id\":\"2\",\n  \"address_id\":\"1\",\n  \"rate\":\"500\",\n  \"pro_size\":\"5\",\n  \"quantity\":\"1\",\n  \"totalprice\":\"500\",\n  \"status\":\"pending\"\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "db09d3dd-bc22-4a6d-a62e-cad606ff3adc",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "607adac4-3f29-48d4-95de-62221a0b5483",
+            "name": "order",
+            "url": "localhost/theshoesbox-api/product/order/order.php",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-01-01T13:37:58.213Z",
+            "modified": "2024-01-01T13:40:40.365Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"3\",\n  \"status\": \"Cancel\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bb10bfec-aa73-468c-9e71-fc95dd127aef",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "4d5e1c4e-2fa2-415b-8935-7307d016b35d",
+            "name": "contact",
+            "url": "",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-01-01T13:41:26.404Z",
+            "modified": "2024-01-01T13:41:26.404Z",
+            "headers": []
+        },
+        {
+            "_id": "e2e0dc75-a3a4-4771-a84b-6613b1d26844",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
+            "name": "address",
+            "url": "",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-01-01T13:44:46.924Z",
+            "modified": "2024-01-01T13:44:46.924Z",
+            "headers": []
+        }
+    ]
+}
