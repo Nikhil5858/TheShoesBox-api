@@ -16,7 +16,7 @@ if ($email == "" || $password == "")
 if (!preg_match($email_format, $email)) 
 {
     http_response_code(403);
-    die(json_encode(["message" => "Invalid email address."]));
+    die(json_encode(["message" => "Wrong Username Or Password"]));
 }
 
 $query = "SELECT id,email,usertype FROM users WHERE email = ? and password = ? and usertype = ?";
