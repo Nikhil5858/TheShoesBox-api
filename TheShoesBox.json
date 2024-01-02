@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "TheShoesBox",
-    "dateExported": "2024-01-01T13:46:48.723Z",
+    "dateExported": "2024-01-02T12:03:48.240Z",
     "version": "1.1",
     "folders": [
         {
@@ -209,24 +209,38 @@
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "4d5e1c4e-2fa2-415b-8935-7307d016b35d",
             "name": "contact",
-            "url": "",
+            "url": "localhost/theshoesbox-api/user/contact.php",
             "method": "GET",
             "sortNum": 90000,
             "created": "2024-01-01T13:41:26.404Z",
-            "modified": "2024-01-01T13:41:26.404Z",
-            "headers": []
+            "modified": "2024-01-02T12:03:23.346Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"demo\",\n  \"email\":\"abc@gmail.com\",\n  \"subject\":\"add\",\n  \"message\":\"demo\"\n}",
+                "form": []
+            },
+            "tests": []
         },
         {
             "_id": "e2e0dc75-a3a4-4771-a84b-6613b1d26844",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "302f5034-012e-4401-abb3-67e279b12387",
             "name": "address",
-            "url": "",
+            "url": "localhost/theshoesbox-api/user/address.php",
             "method": "GET",
             "sortNum": 100000,
             "created": "2024-01-01T13:44:46.924Z",
-            "modified": "2024-01-01T13:44:46.924Z",
-            "headers": []
+            "modified": "2024-01-02T12:03:21.471Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"userId\": \"1\",\n  \"proId\": \"2\",\n  \"fname\": \"dknwd\",\n  \"address\": \"jbkjae\",\n  \"city\": \"dawd\",\n  \"state\": \"kfnkesf\",\n  \"pincode\": \"361004\",\n  \"phoneno\": \"1234567890\",\n  \"email\":\"123@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
         }
     ]
 }
