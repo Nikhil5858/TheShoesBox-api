@@ -3,17 +3,17 @@ include_once '../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-$productId = $data->productId;
-$userId = $data->userId;
+$product_id = $data->product_id;
+$user_id = $data->user_id;
 
-if ($productId == "" || $userId == "") 
+if ($product_id == "" || $user_id == "") 
 {
     http_response_code(403);
     die(json_encode(["message" => "Fill All Fields"]));
 }
 
 $query = "DELETE FROM cart WHERE user_id = ? AND product_id = ?";
-$params = [$userId, $productId];
+$params = [$user_id, $product_id];
 
 $deleteResult = execute($query, $params);
 

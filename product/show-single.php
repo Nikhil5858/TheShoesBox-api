@@ -19,8 +19,6 @@ $query = "SELECT
 $params = [$pro_id];
 
 $response = selectOne($query,$params);
-
-
 if ($response == "")
 {
     http_response_code(403);
