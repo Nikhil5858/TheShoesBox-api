@@ -1,20 +1,20 @@
 <?php
-include_once '../../database/database.php';
+include_once '../database/database.php';
 
 $data = json_decode(file_get_contents('php://input'));
 
-$productId = $data->productId;
-$userId = $data->userId;
+$product_id = $data->product_id;
+$user_id = $data->user_id;
 $quantity = $data->quantity;
 
-if ($productId == "" || $userId == "" || $quantity == "")
+if ($product_id == "" || $user_id == "" || $quantity == "")
 {
     http_response_code(403);
     die(json_encode(["message" => "Fill All Fields"]));
 } 
 
 $query = "SELECT * FROM cart WHERE user_id = ? and product_id = ?";
-$params = [$userId, $productId];
+$params = [$user_id, $product_id];
 $result = selectOne($query, $params);
 
 
@@ -24,7 +24,7 @@ if ($result && is_array($result) && count($result) > 0) {
 } 
 
 $query = "INSERT INTO cart (user_id, product_id,quantity) VALUES (?, ?, ?)";
-$params = [$userId, $productId,$quantity];
+$params = [$user_id, $product_id,$quantity];
 
 $insertResult = execute($query, $params);
 
