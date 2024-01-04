@@ -41,6 +41,14 @@ $query = "INSERT INTO users (name, email, phoneno, password) VALUES (?, ?, ?, ?)
 $params = [$name, $email, $phoneno, $password];
 
 $response = execute($query, $params);
+
+if($response !== false){
+    $query = "INSERT INTO addressdetails (user_id) VALUES (?)";
+    $user_id = lastInsertId();
+    $params = [$user_id];
+    $executeResult = execute($query,$params);
+}
+
 die(json_encode(["message" => "User added!"]));
 
 echo json_encode($response)

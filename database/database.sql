@@ -51,16 +51,15 @@ CREATE TABLE `addressdetails`
 (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT NOT NULL,
-    `pro_id` INT NOT NULL,
-    `name` VARCHAR(50) NOT NULL,
-    `address` VARCHAR(100) NOT NULL,
-    `city` VARCHAR(50) NOT NULL,
-    `state` VARCHAR(50) NOT NULL,
-    `pincode` INT NOT NULL,
-    `phoneno` INT NOT NULL,
-    `email` VARCHAR(50) NOT NULL,
-    FOREIGN KEY (pro_id) REFERENCES product(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    `pro_id` INT DEFAULT NULL,
+    `name` VARCHAR(50) DEFAULT NULL,
+    `address` VARCHAR(100) DEFAULT NULL,
+    `city` VARCHAR(50) DEFAULT NULL,
+    `state` VARCHAR(50) DEFAULT NULL,
+    `pincode` INT DEFAULT NULL,
+    `phoneno` INT DEFAULT NULL,
+    `email` VARCHAR(50) DEFAULT NULL,
+    FOREIGN KEY (pro_id) REFERENCES product(id)
 );
 
 CREATE TABLE `order`
