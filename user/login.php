@@ -1,34 +1,25 @@
 <?php
-include_once '../database/database.php';
 
-$data = json_decode(file_get_contents('php://input'));
+$data = post();
 
 $email = $data->email;
 $password = $data->password;
 
-$email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
+if ($email == "" || $password == "")
+    error(403, "Fill all fields!");
 
-if ($email == "" || $password == "") 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Fill All Fields"]));
-}
-if (!preg_match($email_format, $email)) 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Wrong Username Or Password"]));
-}
+if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    error(403, "Enter valid email!");
 
-$query = "SELECT id,email,usertype FROM users WHERE email = ? and password = ? and usertype = ?";
-$params = [$email, $password, "user"];
+$query = "SELECT id, usertype FROM users WHERE email = ? AND password = ?";
+$params = [$email, $password];
 
 $response = selectOne($query, $params);
 
-if (!$response) 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Wrong Username Or Password"]));
-}
+if (!$response)
+    error(403, "Wrong Username Or Password");
 
-echo json_encode($response)
-?>
+reply([
+    "id" => $response["id"],
+    "usertype" => $response["usertype"]
+]);

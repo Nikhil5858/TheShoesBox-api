@@ -1,55 +1,32 @@
 <?php
-include_once '../database/database.php';
 
-$data = json_decode(file_get_contents('php://input'));
+$data = post();
 
 $name = $data->name;
 $email = $data->email;
-$phoneno = isset($data->phoneno) ? $data->phoneno : null;
 $password = $data->password;
 $confirmpassword = $data->confirmPassword;
 
-$email_format = "^[a-z0-9.]+(\.[a-z0-9]+)*@[a-z]+(\.[a-z]+)*(\.[a-z]{2,3})$^";
+if ($name == "" || $email == "" || $password == "")
+    error(403, "Fill All Fields");
 
-if ($name == "" || $email == "" || $password == "") 
-{
-    http_response_code(400);
-    die(json_encode(["message" => "Fill All Fields"]));
-}
-if ($password !== $confirmpassword) 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Passwords do not match!"]));
-}
-if (!preg_match($email_format, $email)) 
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Invalid email address."]));
-}
+if ($password != $confirmpassword)
+    error(403, "Passwords do not match!");
 
-$query = "SELECT * FROM users WHERE email = ?";
-$params = [$email];
-$response = selectOne($query, $params);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    error(403, "Invalid email address.");
+
+$response = selectOne("SELECT * FROM users WHERE email = ?", [$email]);
 
 if ($response != "")
-{
-    http_response_code(403);
-    die(json_encode(["message" => "User already Exits. Please choose a different user."]));
-}
+    error(403, "User already taken.");
 
-$query = "INSERT INTO users (name, email, phoneno, password) VALUES (?, ?, ?, ?)";
-$params = [$name, $email, $phoneno, $password];
+$query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+$params = [$name, $email, $password];
 
-$response = execute($query, $params);
+execute($query, $params);
 
-if($response !== false){
-    $query = "INSERT INTO addressdetails (user_id) VALUES (?)";
-    $user_id = lastInsertId();
-    $params = [$user_id];
-    $executeResult = execute($query,$params);
-}
+$query = "INSERT INTO addressdetails (user_id) VALUES (?)";
+$executeResult = execute($query, [lastInsertId()]);
 
-die(json_encode(["message" => "User added!"]));
-
-echo json_encode($response)
-?>
+success("User successfully added");
