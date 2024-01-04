@@ -1,6 +1,6 @@
 <?php
 
-$root = "/api";
+$root = "/TheShoesBox-api";
 
 define("BASE_DIR", $_SERVER['DOCUMENT_ROOT'] . $root);
 define("BASE_URL", $root);

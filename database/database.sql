@@ -8,7 +8,7 @@ CREATE TABLE `users`
     `name` VARCHAR(100) NOT NULL,
     `email` VARCHAR(100) NOT NULL,
     `password` VARCHAR(100) NOT NULL,
-    `phoneno` INT DEFAULT NULL,
+    `phoneno` VARCHAR(10) DEFAULT NULL,
     `usertype` VARCHAR(20) DEFAULT "user" 
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE `cart`
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT NOT NULL, 
     `product_id` INT NOT NULL,
-    `quantity` INT NOT NULL,
+    `quantity` INT DEFAULT 1,
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
@@ -51,15 +51,12 @@ CREATE TABLE `addressdetails`
 (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `user_id` INT NOT NULL,
-    `pro_id` INT DEFAULT NULL,
-    `name` VARCHAR(50) DEFAULT NULL,
     `address` VARCHAR(100) DEFAULT NULL,
     `city` VARCHAR(50) DEFAULT NULL,
     `state` VARCHAR(50) DEFAULT NULL,
-    `pincode` INT DEFAULT NULL,
-    `phoneno` INT DEFAULT NULL,
-    `email` VARCHAR(50) DEFAULT NULL,
-    FOREIGN KEY (pro_id) REFERENCES product(id)
+    `pincode` VARCHAR(6) DEFAULT NULL,
+    `phoneno` VARCHAR(10) DEFAULT NULL,
+    `email` VARCHAR(50) DEFAULT NULL
 );
 
 CREATE TABLE `order`
@@ -72,7 +69,7 @@ CREATE TABLE `order`
     `pro_size` INT NOT NULL,
     `quantity` INT NOT NULL,
     `totalprice` INT NOT NULL,
-    `status` VARCHAR(50) NOT NULL,
+    `status` VARCHAR(50) DEFAULT "Pending",
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES product(id),
     FOREIGN KEY (address_id) REFERENCES AddressDetails(id)
