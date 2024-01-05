@@ -1,18 +1,11 @@
 <?php
-include_once '../../database/database.php';
 
-$data = json_decode(file_get_contents('php://input'));
+$data = post();
 
 $query = "SELECT id,name FROM brand";
 $response = select($query);
 
-
 if ($query == "")
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Data Not Found"]));
-}
+    error(403, "Data Not Found");
 
-
-echo json_encode($response)
-?>
+reply($response);
