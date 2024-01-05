@@ -17,5 +17,9 @@ $query = "INSERT INTO `order` (user_id, product_id, address_id, rate, pro_size, 
 $params = [$user_id, $product_id, $address_id, $rate, $pro_size, $quantity, $totalprice];
 execute($query, $params);
 
+$query = "DELETE FROM cart WHERE user_id=? AND product_id=?";
+$params = [$user_id,$product_id];
+execute($query,$params);
+
 success("Your Order is successfully added");
 
