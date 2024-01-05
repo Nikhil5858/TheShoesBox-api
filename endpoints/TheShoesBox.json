@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "TheShoesBox",
-    "dateExported": "2024-01-02T12:03:48.240Z",
+    "dateExported": "2024-01-05T03:56:38.789Z",
     "version": "1.1",
     "folders": [
         {
@@ -47,6 +47,20 @@
             "sortNum": 50000
         },
         {
+            "_id": "28bf520e-d6f7-434e-a48d-cd223d6888ff",
+            "name": "product",
+            "containerId": "",
+            "created": "2024-01-05T03:48:41.578Z",
+            "sortNum": 52500
+        },
+        {
+            "_id": "92e66ad5-0496-43f2-964e-5851a3662479",
+            "name": "Place - Order",
+            "containerId": "",
+            "created": "2024-01-04T14:59:34.526Z",
+            "sortNum": 55000
+        },
+        {
             "_id": "4d5e1c4e-2fa2-415b-8935-7307d016b35d",
             "name": "Contact",
             "containerId": "",
@@ -68,15 +82,15 @@
             "containerId": "3c06d68e-d291-46a5-bb40-6c276d78ff95",
             "name": "Login",
             "url": "localhost/theshoesbox-api/user/login.php",
-            "method": "GET",
+            "method": "POST",
             "sortNum": 30000,
             "created": "2024-01-01T13:20:19.897Z",
-            "modified": "2024-01-01T13:25:34.893Z",
+            "modified": "2024-01-05T03:55:45.002Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"vai@gmail.com\",\n  \"password\": \"v\"\n}",
+                "raw": "{\n  \"email\": \"@gmail.com\",\n  \"password\": \"\"\n}",
                 "form": []
             },
             "tests": []
@@ -87,15 +101,15 @@
             "containerId": "3c06d68e-d291-46a5-bb40-6c276d78ff95",
             "name": "Register",
             "url": "localhost/theshoesbox-api/user/register.php",
-            "method": "GET",
+            "method": "POST",
             "sortNum": 40000,
             "created": "2024-01-01T13:24:39.537Z",
-            "modified": "2024-01-01T13:27:16.877Z",
+            "modified": "2024-01-04T07:00:38.793Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\":\"zoro\",\n  \"email\":\"zoro@gmail.com\",\n  \"password\":\"zoro\",\n  \"confirmPassword\":\"zoro\"\n}",
+                "raw": "{\n  \"name\":\"aec\",\n  \"email\":\"ahds@gmail.com\",\n  \"password\":\"1\",\n  \"confirmPassword\":\"1\"\n}",
                 "form": []
             },
             "tests": []
@@ -105,11 +119,11 @@
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "2fa857af-ba0f-4708-bce1-ea1fcaf476c1",
             "name": "select",
-            "url": "localhost/theshoesbox-api/product/category/category.php",
-            "method": "GET",
+            "url": "localhost/theshoesbox-api/category/category.php",
+            "method": "POST",
             "sortNum": 50000,
             "created": "2024-01-01T13:31:38.079Z",
-            "modified": "2024-01-01T13:32:34.551Z",
+            "modified": "2024-01-04T14:51:35.937Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -119,11 +133,11 @@
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "71b51860-5e42-4cea-8484-2ffd3278473c",
             "name": "select",
-            "url": "localhost/theshoesbox-api/product/brand/brand.php",
-            "method": "GET",
+            "url": "localhost/theshoesbox-api/brand/show.php",
+            "method": "POST",
             "sortNum": 50000,
             "created": "2024-01-01T13:32:47.282Z",
-            "modified": "2024-01-01T13:33:08.853Z",
+            "modified": "2024-01-04T13:58:18.730Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -133,16 +147,35 @@
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
             "name": "Add",
-            "url": "localhost/theshoesbox-api/product/cart/add.php",
-            "method": "GET",
+            "url": "localhost/theshoesbox-api/cart/add.php",
+            "method": "POST",
             "sortNum": 60000,
             "created": "2024-01-01T13:33:55.557Z",
-            "modified": "2024-01-01T13:35:12.919Z",
+            "modified": "2024-01-04T14:09:23.917Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"productId\":\"4\",\n  \"userId\":\"1\",\n  \"quantity\":\"100000\"\n}",
+                "raw": "{\n  \"product_id\":\"1\",\n  \"user_id\":\"1\",\n  \"quantity\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "064dd3d3-c377-4e32-9b04-98b207c1bf29",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
+            "name": "Show",
+            "url": "localhost/theshoesbox-api/cart/show.php",
+            "method": "POST",
+            "sortNum": 65000,
+            "created": "2024-01-04T14:24:20.491Z",
+            "modified": "2024-01-04T14:39:39.794Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\" : \"1\"\n}\n",
                 "form": []
             },
             "tests": []
@@ -152,16 +185,16 @@
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
             "name": "Delete",
-            "url": "localhost/theshoesbox-api/product/cart/add.php",
-            "method": "GET",
+            "url": "localhost/theshoesbox-api/cart/delete.php",
+            "method": "POST",
             "sortNum": 70000,
             "created": "2024-01-01T13:36:23.962Z",
-            "modified": "2024-01-01T13:36:23.962Z",
+            "modified": "2024-01-04T14:19:39.912Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"productId\":\"4\",\n  \"userId\":\"1\",\n  \"quantity\":\"100000\"\n}",
+                "raw": "{\n  \"product_id\":\"1\",\n  \"user_id\":\"1\"\n}",
                 "form": []
             },
             "tests": []
@@ -170,36 +203,97 @@
             "_id": "ca0faae4-8d10-40b3-a946-7e140e2740ed",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "607adac4-3f29-48d4-95de-62221a0b5483",
-            "name": "checkout",
-            "url": "localhost/theshoesbox-api/product/order/checkout.php",
-            "method": "GET",
+            "name": "show",
+            "url": "localhost/theshoesbox-api/order/show.php",
+            "method": "POST",
             "sortNum": 70000,
             "created": "2024-01-01T13:37:49.247Z",
-            "modified": "2024-01-01T13:39:47.530Z",
+            "modified": "2024-01-04T14:59:08.441Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "919cd1c2-8cf2-4397-8d23-b256dcaf0156",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "92e66ad5-0496-43f2-964e-5851a3662479",
+            "name": "add",
+            "url": "localhost/theshoesbox-api/place-order/add.php",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-01-04T14:59:34.526Z",
+            "modified": "2024-01-04T15:03:01.524Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"user_id\":\"1\",\n  \"product_id\":\"2\",\n  \"address_id\":\"1\",\n  \"rate\":\"500\",\n  \"pro_size\":\"5\",\n  \"quantity\":\"1\",\n  \"totalprice\":\"500\",\n  \"status\":\"pending\"\n}\n",
+                "raw": "{\r\n  \"user_id\" : \"1\",\r\n  \"product_id\" : \"1\",\r\n  \"address_id\" : \"1\",\r\n  \"rate\" : \"53\",\r\n  \"pro_size\" : \"435\",\r\n  \"quantity\" : \"35\",\r\n  \"totalprice\" : \"4533\"\r\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "31315e11-f165-4cec-8c2a-31d9c299c437",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "28bf520e-d6f7-434e-a48d-cd223d6888ff",
+            "name": "show all",
+            "url": "localhost/theshoesbox-api/product/show-all.php",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-01-05T03:48:41.578Z",
+            "modified": "2024-01-05T03:50:37.587Z",
+            "headers": [],
+            "params": [],
             "tests": []
         },
         {
             "_id": "db09d3dd-bc22-4a6d-a62e-cad606ff3adc",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "607adac4-3f29-48d4-95de-62221a0b5483",
-            "name": "order",
-            "url": "localhost/theshoesbox-api/product/order/order.php",
-            "method": "GET",
+            "name": "update",
+            "url": "localhost/theshoesbox-api/order/update.php",
+            "method": "POST",
             "sortNum": 80000,
             "created": "2024-01-01T13:37:58.213Z",
-            "modified": "2024-01-01T13:40:40.365Z",
+            "modified": "2024-01-04T14:58:39.777Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f576b348-c52d-4f41-856b-bb56aba6bfe7",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "92e66ad5-0496-43f2-964e-5851a3662479",
+            "name": "show - Address",
+            "url": "localhost/theshoesbox-api/place-order/show-address.php",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-01-04T14:59:34.527Z",
+            "modified": "2024-01-04T16:06:12.356Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"id\": \"3\",\n  \"status\": \"Cancel\"\n}",
+                "raw": "{\n  \"user_id\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2f761469-5c56-4397-b371-19f1aa70e899",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "28bf520e-d6f7-434e-a48d-cd223d6888ff",
+            "name": "show single",
+            "url": "localhost/theshoesbox-api/product/show-single.php",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-01-05T03:48:41.579Z",
+            "modified": "2024-01-05T03:52:12.317Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"pro_id\":\"1\"\n}",
                 "form": []
             },
             "tests": []
@@ -224,20 +318,77 @@
             "tests": []
         },
         {
-            "_id": "e2e0dc75-a3a4-4771-a84b-6613b1d26844",
+            "_id": "cfccb3c3-90dc-40d9-bd5f-a4f4a2e5480a",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
-            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
-            "name": "address",
-            "url": "localhost/theshoesbox-api/user/address.php",
-            "method": "GET",
-            "sortNum": 100000,
-            "created": "2024-01-01T13:44:46.924Z",
-            "modified": "2024-01-02T12:03:21.471Z",
+            "containerId": "92e66ad5-0496-43f2-964e-5851a3662479",
+            "name": "update - Address ",
+            "url": "localhost/theshoesbox-api/place-order/update-address.php",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-01-04T15:00:18.933Z",
+            "modified": "2024-01-05T03:31:12.575Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"userId\": \"1\",\n  \"proId\": \"2\",\n  \"fname\": \"dknwd\",\n  \"address\": \"jbkjae\",\n  \"city\": \"dawd\",\n  \"state\": \"kfnkesf\",\n  \"pincode\": \"361004\",\n  \"phoneno\": \"1234567890\",\n  \"email\":\"123@gmail.com\"\n}",
+                "raw": "{\n  \"user_id\" : \"1\",\n  \"address\" : \"1\",\n  \"city\" : \"fee\",\n  \"state\" : \"fee\",\n  \"pincode\" : \"361004\",\n  \"phoneno\" : \"1234567890\",\n  \"email\" : \"1@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e2e0dc75-a3a4-4771-a84b-6613b1d26844",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
+            "name": "update-address",
+            "url": "localhost/theshoesbox-api/place-order/update-address.php",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-01-01T13:44:46.924Z",
+            "modified": "2024-01-04T07:01:47.192Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": \"10\",\n  \"pro_id\": \"1\",\n  \"fname\": \"dabnad\",\n  \"address\": \"jambuda\",\n  \"city\": \"jamnagar\",\n  \"state\": \"Gujarat\",\n  \"pincode\": \"361004\",\n  \"phoneno\": \"1234567890\",\n  \"email\":\"abc@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c3bd7bdf-99c9-4fcc-9bbd-f29fd00974ba",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
+            "name": "update",
+            "url": "localhost/theshoesbox-api/cart/update.php",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-01-03T14:19:00.042Z",
+            "modified": "2024-01-04T14:48:24.656Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": \"1\",\n  \"product_id\": \"1\",\n  \"quantity\": 2\n}\n",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "20c03e20-dd15-4c8c-95ea-94e35aa764b8",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
+            "name": "address show",
+            "url": "localhost/theshoesbox-api/place-order/show-address.php",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-01-04T06:24:16.057Z",
+            "modified": "2024-01-05T03:38:32.399Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\": \"1\"\n}",
                 "form": []
             },
             "tests": []
