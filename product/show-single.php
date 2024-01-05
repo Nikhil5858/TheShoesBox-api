@@ -1,7 +1,6 @@
 <?php
-include_once '../database/database.php';
 
-$data = json_decode(file_get_contents('php://input'));
+$data = post();
 
 $pro_id = $data->pro_id;
 
@@ -19,11 +18,10 @@ $query = "SELECT
 $params = [$pro_id];
 
 $response = selectOne($query,$params);
-if ($response == "")
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Data Not Found"]));
-}
 
-echo json_encode($response)
-?>
+if(!$response)
+    error(403, "Product Not Found.");
+
+reply([
+    "user_id" => $response
+]);
