@@ -9,11 +9,11 @@ if ($product_id == "" || $user_id == "")
 
 $query = "SELECT * FROM cart WHERE user_id = ? and product_id = ?";
 $params = [$user_id, $product_id];
-$result = selectOne($query, $params);
+$response = selectOne($query, $params);
 
 
-$cartId =  $result["id"];
-$productQuantity = $result["quantity"];
+$cartId =  $response["id"];
+$productQuantity = $response["quantity"];
 
 $newProductQuantity = $productQuantity - 1;
 

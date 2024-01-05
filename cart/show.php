@@ -1,11 +1,11 @@
 <?php
-include_once '../database/database.php';
-$data = json_decode(file_get_contents('php://input'));
+
+$data = post();
 
 $user_id = $data->user_id;
 
 $query = "SELECT 
-            product.id, product.name, product.price, product.pro_img
+            cart.user_id,cart.quantity,product.id, product.name, product.price, product.pro_img
         FROM 
             product
         INNER JOIN 
@@ -19,11 +19,10 @@ $params = [$user_id];
 
 
 $response = select($query, $params);
-if ($response == "")
-{
-    http_response_code(403);
-    die(json_encode(["message" => "Data Not Found"]));
-}
 
-echo json_encode($response);
-?>
+if (!$response)
+    error(403, "Data Not Found");
+
+reply([
+    "user_id" => $response
+]);

@@ -12,7 +12,5 @@ if ($product_id == "" || $user_id == "" || $quantity == "")
     die(json_encode(["message" => "Fill All Fields"]));
 }
 
-
-
 echo json_encode($response);
 ?>
