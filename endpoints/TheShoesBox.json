@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "TheShoesBox",
-    "dateExported": "2024-01-05T03:56:38.789Z",
+    "dateExported": "2024-01-05T14:29:57.504Z",
     "version": "1.1",
     "folders": [
         {
@@ -66,13 +66,6 @@
             "containerId": "",
             "created": "2024-01-01T13:18:22.055Z",
             "sortNum": 60000
-        },
-        {
-            "_id": "302f5034-012e-4401-abb3-67e279b12387",
-            "name": "Address",
-            "containerId": "",
-            "created": "2024-01-01T13:18:22.056Z",
-            "sortNum": 80000
         }
     ],
     "requests": [
@@ -85,12 +78,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-01-01T13:20:19.897Z",
-            "modified": "2024-01-05T03:55:45.002Z",
+            "modified": "2024-01-05T14:11:24.046Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"@gmail.com\",\n  \"password\": \"\"\n}",
+                "raw": "{\n  \"email\": \"abc@gmail.com\",\n  \"password\": \"abc\"\n}",
                 "form": []
             },
             "tests": []
@@ -104,12 +97,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-01-01T13:24:39.537Z",
-            "modified": "2024-01-04T07:00:38.793Z",
+            "modified": "2024-01-05T14:10:14.364Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\":\"aec\",\n  \"email\":\"ahds@gmail.com\",\n  \"password\":\"1\",\n  \"confirmPassword\":\"1\"\n}",
+                "raw": "{\n  \"name\":\"abc\",\n  \"email\":\"abc@gmail.c\",\n  \"password\":\"abc\",\n  \"confirmPassword\":\"abc\"\n}",
                 "form": []
             },
             "tests": []
@@ -208,9 +201,14 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2024-01-01T13:37:49.247Z",
-            "modified": "2024-01-04T14:59:08.441Z",
+            "modified": "2024-01-05T14:24:26.349Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":\"1\"\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -222,12 +220,12 @@
             "method": "POST",
             "sortNum": 70000,
             "created": "2024-01-04T14:59:34.526Z",
-            "modified": "2024-01-04T15:03:01.524Z",
+            "modified": "2024-01-05T14:22:57.925Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\r\n  \"user_id\" : \"1\",\r\n  \"product_id\" : \"1\",\r\n  \"address_id\" : \"1\",\r\n  \"rate\" : \"53\",\r\n  \"pro_size\" : \"435\",\r\n  \"quantity\" : \"35\",\r\n  \"totalprice\" : \"4533\"\r\n}",
+                "raw": "{\n  \"user_id\" : \"1\",\n  \"product_id\" : \"1\",\n  \"address_id\" : \"1\",\n  \"rate\" : \"100\",\n  \"pro_size\" : \"1\",\n  \"quantity\" : \"2\",\n  \"totalprice\" : \"200\"\n}",
                 "form": []
             },
             "tests": []
@@ -255,9 +253,14 @@
             "method": "POST",
             "sortNum": 80000,
             "created": "2024-01-01T13:37:58.213Z",
-            "modified": "2024-01-04T14:58:39.777Z",
+            "modified": "2024-01-05T14:24:43.628Z",
             "headers": [],
             "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"order_id\": 1,\n  \"status\": \"cancel\"\n}",
+                "form": []
+            },
             "tests": []
         },
         {
@@ -326,31 +329,12 @@
             "method": "POST",
             "sortNum": 90000,
             "created": "2024-01-04T15:00:18.933Z",
-            "modified": "2024-01-05T03:31:12.575Z",
+            "modified": "2024-01-05T14:23:45.383Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"user_id\" : \"1\",\n  \"address\" : \"1\",\n  \"city\" : \"fee\",\n  \"state\" : \"fee\",\n  \"pincode\" : \"361004\",\n  \"phoneno\" : \"1234567890\",\n  \"email\" : \"1@gmail.com\"\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "e2e0dc75-a3a4-4771-a84b-6613b1d26844",
-            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
-            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
-            "name": "update-address",
-            "url": "localhost/theshoesbox-api/place-order/update-address.php",
-            "method": "POST",
-            "sortNum": 100000,
-            "created": "2024-01-01T13:44:46.924Z",
-            "modified": "2024-01-04T07:01:47.192Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"user_id\": \"10\",\n  \"pro_id\": \"1\",\n  \"fname\": \"dabnad\",\n  \"address\": \"jambuda\",\n  \"city\": \"jamnagar\",\n  \"state\": \"Gujarat\",\n  \"pincode\": \"361004\",\n  \"phoneno\": \"1234567890\",\n  \"email\":\"abc@gmail.com\"\n}",
+                "raw": "{\n  \"user_id\" : \"1\",\n  \"address\" : \"1\",\n  \"city\" : \"jamnagar\",\n  \"state\" : \"Gujarat\",\n  \"pincode\" : \"361004\",\n  \"phoneno\" : \"1234567890\",\n  \"email\" : \"abc@gmail.com\"\n}",
                 "form": []
             },
             "tests": []
@@ -359,36 +343,74 @@
             "_id": "c3bd7bdf-99c9-4fcc-9bbd-f29fd00974ba",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
             "containerId": "ebbf464f-6a2a-46fd-a643-f32761f05088",
-            "name": "update",
-            "url": "localhost/theshoesbox-api/cart/update.php",
+            "name": "remove quantity",
+            "url": "localhost/theshoesbox-api/cart/remove.php",
             "method": "POST",
             "sortNum": 110000,
             "created": "2024-01-03T14:19:00.042Z",
-            "modified": "2024-01-04T14:48:24.656Z",
+            "modified": "2024-01-05T14:20:11.454Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"user_id\": \"1\",\n  \"product_id\": \"1\",\n  \"quantity\": 2\n}\n",
+                "raw": "{\n  \"user_id\": \"1\",\n  \"product_id\": \"1\",\n  \"quantity\": 1\n}\n",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "20c03e20-dd15-4c8c-95ea-94e35aa764b8",
+            "_id": "fb7a4169-e7f7-4fdd-bc96-c5eae3942ce0",
             "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
-            "containerId": "302f5034-012e-4401-abb3-67e279b12387",
-            "name": "address show",
-            "url": "localhost/theshoesbox-api/place-order/show-address.php",
+            "containerId": "1dadbf43-0b48-4e89-a9ff-405fc5bec132",
+            "name": "show - profile",
+            "url": "localhost/theshoesbox-api/profile/show.php",
             "method": "POST",
-            "sortNum": 110000,
-            "created": "2024-01-04T06:24:16.057Z",
-            "modified": "2024-01-05T03:38:32.399Z",
+            "sortNum": 120000,
+            "created": "2024-01-05T04:38:37.823Z",
+            "modified": "2024-01-05T14:12:14.747Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"user_id\": \"1\"\n}",
+                "raw": "{\n  \"user_id\":\"1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6b0a664d-9483-49c5-91cd-28386adfe1c4",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "1dadbf43-0b48-4e89-a9ff-405fc5bec132",
+            "name": "update- profile",
+            "url": "localhost/theshoesbox-api/profile/update.php",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-01-05T05:03:30.984Z",
+            "modified": "2024-01-05T14:10:44.163Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":\"1\",\n  \"name\":\"abc\",\n  \"email\":\"abc@gmail.com\",\n  \"phoneno\":\"0123456789\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6d710ec3-bfaf-4bfc-92b5-0bd7964d981a",
+            "colId": "d2c96ea7-8109-4ddb-a106-dddc041332bb",
+            "containerId": "1dadbf43-0b48-4e89-a9ff-405fc5bec132",
+            "name": "forgot-password",
+            "url": "localhost/theshoesbox-api/profile/forgot-password.php",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2024-01-05T05:09:39.415Z",
+            "modified": "2024-01-05T14:12:50.795Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user_id\":\"1\",\n  \"old_password\":\"abc\",\n  \"new_password\":\"1\",\n  \"confirm_password\":\"1\"\n}",
                 "form": []
             },
             "tests": []
