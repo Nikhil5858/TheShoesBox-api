@@ -18,6 +18,11 @@ if(!preg_match($phoneno_format, $phoneno))
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 error(403, "Invalid email address.");
 
+$response = selectOne("SELECT * FROM users WHERE email = ?", [$email]);
+
+if ($response != "")
+    error(403, "User already taken.");
+
 $query = "UPDATE users SET name=?,email=?,phoneno=? WHERE id=?";
 $params = [$name,$email,$phoneno,$user_id];
 $response = selectOne($query,$params);
