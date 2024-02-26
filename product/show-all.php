@@ -16,9 +16,7 @@ $query = "SELECT
 $response = select($query);
 
 
-if(!$response)
+if (!$response)
     error(403, "Product Not Found.");
 
-reply([
-    "user_id" => $response
-]);
+reply($response);
