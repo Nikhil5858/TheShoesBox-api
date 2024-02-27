@@ -1,11 +1,9 @@
 <?php
 
-$data = post();
-
-$user_id = $data->user_id;
+$user_id = $_GET['user_id'];
 
 $query = "SELECT 
-            cart.user_id,cart.quantity,product.id, product.name, product.price, product.pro_img
+            cart.user_id, cart.quantity, product.id, product.name, product.price, product.pro_img
         FROM 
             product
         INNER JOIN 
@@ -17,12 +15,11 @@ $query = "SELECT
 
 $params = [$user_id];
 
-
 $response = select($query, $params);
 
-if (!$response)
+if (!$response) {
     error(403, "Data Not Found");
+}
 
-reply([
-    "user_id" => $response
-]);
+reply($response);
+?>
