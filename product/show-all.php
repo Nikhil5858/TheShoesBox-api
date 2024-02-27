@@ -5,7 +5,7 @@ $data = post();
 $query = "SELECT 
             brand.name 
         as 
-            bname,product.id,product.name,product.price,product.pro_img 
+            bname,product.id,product.name,product.price,product.pro_img,product.pro_details 
         FROM 
             brand,product 
         where 
