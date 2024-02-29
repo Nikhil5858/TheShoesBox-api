@@ -3,7 +3,7 @@
 $user_id = $_GET['user_id'];
 
 $query = "SELECT 
-            cart.user_id, cart.quantity, product.id, product.name, product.price, product.pro_img
+            cart.user_id, cart.id AS cartId,cart.quantity, product.id, product.name, product.price, product.pro_img
         FROM 
             product
         INNER JOIN 
@@ -22,4 +22,3 @@ if (!$response) {
 }
 
 reply($response);
-?>
