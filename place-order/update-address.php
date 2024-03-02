@@ -10,20 +10,27 @@ $pincode = $data->pincode;
 $phoneno = $data->phoneno;
 $email = $data->email;
 
-$pincode_format = "^[1-9]{1}[0-9]{2}\\s{0,1}[0-9]{3}$^";
-$phoneno_format = '/^[0-9]{10}$/';
 
-if($user_id == "" || $address == "" || $city == "" || $state == "" || $pincode == "" || $phoneno == "" || $email == "")
-    error(400,"Fill All Fields");
-
-if (!preg_match($pincode_format, $pincode))
-    error(400,"Invalid Pincode");
-
-if(!preg_match($phoneno_format, $phoneno))
-    error(400,"Invalid Phoneno");
+if ($user_id == "" || $address == "" || $city == "" || $state == "" || $pincode == "" || $phoneno == "" || $email == "")
+    error(400, "Fill All Fields");
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     error(403, "Invalid email address.");
+
+$phoneno_format = '/^[0-9]{10}$/';
+if (!preg_match($phoneno_format, $phoneno))
+    error(400, "Invalid Phoneno");
+
+$state_formate = "/^[A-Za-z]+$/";
+if (!preg_match($state_formate, $state))
+error(400, "Invalid State Name");
+
+if (!preg_match($state_formate, $city))
+error(400, "Invalid City Name");
+
+$pincode_format = "/^\d{6}$/";
+if (!preg_match($pincode_format, $pincode))
+    error(400, "Invalid Pincode");
 
 $query = "SELECT * FROM addressdetails WHERE user_id = ?";
 $params = [$user_id];
@@ -34,4 +41,3 @@ $params = [$address, $city, $state, $pincode, $phoneno, $email, $user_id];
 execute($query, $params);
 
 success("Address Registered Successfully.");
-
