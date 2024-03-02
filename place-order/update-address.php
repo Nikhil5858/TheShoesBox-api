@@ -23,10 +23,10 @@ if (!preg_match($phoneno_format, $phoneno))
 
 $state_formate = "/^[A-Za-z]+$/";
 if (!preg_match($state_formate, $state))
-error(400, "Invalid State Name");
+    error(400, "Invalid State Name");
 
 if (!preg_match($state_formate, $city))
-error(400, "Invalid City Name");
+    error(400, "Invalid City Name");
 
 $pincode_format = "/^\d{6}$/";
 if (!preg_match($pincode_format, $pincode))
