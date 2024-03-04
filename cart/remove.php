@@ -15,6 +15,9 @@ $response = selectOne($query, $params);
 $cartId =  $response["id"];
 $productQuantity = $response["quantity"];
 
-$newProductQuantity = $productQuantity - 1;
+if($productQuantity > 1){
+    
+    $newProductQuantity = $productQuantity - 1;    
+    execute("UPDATE cart SET quantity = ? WHERE id = ?", [$newProductQuantity, $cartId]);
+}
 
-execute("UPDATE cart SET quantity = ? WHERE id = ?", [$newProductQuantity, $cartId]);
