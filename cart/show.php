@@ -3,7 +3,7 @@
 $user_id = $_GET['user_id'];
 
 $query = "SELECT 
-            cart.user_id, cart.id AS cartId,cart.quantity, product.id, product.name, product.price, product.pro_img
+            cart.user_id, cart.id AS cartId,cart.quantity, cart.product_id, product.id, product.name, product.price, product.pro_img
         FROM 
             product
         INNER JOIN 

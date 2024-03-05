@@ -32,12 +32,14 @@ $pincode_format = "/^\d{6}$/";
 if (!preg_match($pincode_format, $pincode))
     error(400, "Invalid Pincode");
 
-$query = "SELECT * FROM addressdetails WHERE user_id = ?";
-$params = [$user_id];
-$response = select($query, $params);
 
 $query = "UPDATE addressdetails SET address=?, city=?, state=?, pincode=?, phoneno=?, email=? WHERE user_id=?";
 $params = [$address, $city, $state, $pincode, $phoneno, $email, $user_id];
 execute($query, $params);
 
-success("Address Registered Successfully.");
+$query = "SELECT * FROM addressdetails WHERE user_id = ?";
+$params = [$user_id];
+$response = select($query, $params);
+
+reply($response);
+
