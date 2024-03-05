@@ -27,9 +27,6 @@ $params = [$name, $email, $password];
 execute($query, $params);
 $user_id = lastInsertId();
 
-$query = "INSERT INTO addressdetails (user_id) VALUES (?)";
-$executeResult = execute($query, [lastInsertId()]);
-
 reply([
     "id" => $user_id
 ]);

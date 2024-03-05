@@ -33,12 +33,14 @@ if (!preg_match($pincode_format, $pincode))
     error(400, "Invalid Pincode");
 
 
-$query = "UPDATE addressdetails SET address=?, city=?, state=?, pincode=?, phoneno=?, email=? WHERE user_id=?";
+$query = "INSERT INTO addressdetails(address, city, state, pincode, phoneno, email, user_id) VALUES(?,?,?,?,?,?,?)";
 $params = [$address, $city, $state, $pincode, $phoneno, $email, $user_id];
 execute($query, $params);
 
-$query = "SELECT * FROM addressdetails WHERE user_id = ?";
-$params = [$user_id];
+$address_id = lastInsertId();
+
+$query = "SELECT * FROM addressdetails WHERE user_id = ? AND id = ?";
+$params = [$user_id, $address_id];
 $response = select($query, $params);
 
 reply($response);
