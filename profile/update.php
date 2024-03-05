@@ -7,24 +7,23 @@ $name = $data->name;
 $email = $data->email;
 $phoneno = $data->phoneno;
 
-$phoneno_format = '/^[0-9]{10}$/';
-
-if ($name == "" || $email == "" || $phoneno == "")
+if ($name == "" || $email == "") {
     error(403, "Fill All Fields");
- 
-if(!preg_match($phoneno_format, $phoneno))
-    error(400,"Invalid Phoneno");
+}
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-error(403, "Invalid email address.");
+if (!empty($phoneno)) {
+    $phoneno_format = '/^[0-9]{10}$/';
+    if (!preg_match($phoneno_format, $phoneno)) {
+        error(400, "Invalid Phoneno");
+    }
+}
 
-$response = selectOne("SELECT * FROM users WHERE email = ?", [$email]);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    error(403, "Invalid email address.");
+}
 
-if ($response != "")
-    error(403, "User already taken.");
-
-$query = "UPDATE users SET name=?,email=?,phoneno=? WHERE id=?";
-$params = [$name,$email,$phoneno,$user_id];
-$response = selectOne($query,$params);
+$query = "UPDATE users SET name=?, email=?, phoneno=? WHERE id=?";
+$params = [$name, $email, $phoneno, $user_id];
+$response = selectOne($query, $params);
 
 success("Profile Updated Successfully.");
