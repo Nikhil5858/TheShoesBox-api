@@ -12,7 +12,4 @@ $query = "SELECT o.id, o.user_id, o.rate, o.pro_size, o.quantity, o.totalprice, 
 
 $response = select($query);
 
-if (!$response)
-    error(403, "Product Not Found.");
-
 reply($response);
