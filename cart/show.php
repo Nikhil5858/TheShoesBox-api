@@ -17,8 +17,8 @@ $params = [$user_id];
 
 $response = select($query, $params);
 
-if (!$response) {
-    error(403, "Data Not Found");
-}
+// if (!$response) {
+//     error(403, "Data Not Found");
+// }
 
 reply($response);
