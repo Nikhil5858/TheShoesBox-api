@@ -31,7 +31,7 @@ CREATE TABLE `product`
     `cat_id` INT NOT NULL,
     `brand_id` INT NOT NULL,
     `price` INT NOT NULL,
-    `pro_img` VARCHAR(59) DEFAULT NULL,
+    `pro_img` VARCHAR(100) DEFAULT NULL,
     `pro_details` VARCHAR (10000) NOT NULL,
     FOREIGN KEY (brand_id) REFERENCES brand(id),
     FOREIGN KEY (cat_id) REFERENCES category(id)
